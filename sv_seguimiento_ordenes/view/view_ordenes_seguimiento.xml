@@ -1,0 +1,28 @@
+<odoo>
+    <data>
+        <!-- Vista formulario extendida para la orden de venta -->
+        <record id="view_sale_order_form_inherit" model="ir.ui.view">
+            <field name="name">sale.order.form.inherit</field>
+            <field name="model">sale.order</field>
+            <field name="inherit_id" ref="sale.view_order_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//notebook" position="inside">
+                    <page string="Seguimiento de ordenes" groups="base.group_user">
+                        <field name="workorder_ids" widget="one2many_list" readonly="1">
+                        <tree>
+                            <field name="workcenter_id" readonly="1"/>
+                            <field name="product_id" readonly="1"/>
+                            <field name="date_start" readonly="1"/>
+                            <field name="date_finished" readonly="1"/>
+                            <field name="state" readonly="1"/>
+                        </tree>
+                        </field>
+                    </page>
+                </xpath>
+            </field>
+        </record>
+
+    </data>
+</odoo>
+
+
