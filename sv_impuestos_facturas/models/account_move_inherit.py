@@ -9,7 +9,7 @@ class AccountMove(models.Model):
         moves_with_payments = self.filtered('payment_id')
         other_moves = self - moves_with_payments
 
-        if other_moves.move_type not in ('in_invoice', 'in_refund', 'in_receipt'):
+        if other_moves.move_type not in ('entry', 'in_invoice', 'in_refund', 'in_receipt'):
             count_lines_without_tax = sum(1 for line in self.invoice_line_ids if not line.tax_ids)
 
             if count_lines_without_tax > 0:
