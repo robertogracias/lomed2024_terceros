@@ -16,7 +16,7 @@
     'version': '16.0',
 
     # any module necessary for this one to work correctly
-    'depends': ['portal','website'],
+    'depends': ['website','product','sv_accounting','sv_caja',],
 
     # always loaded
     'data': [
@@ -24,6 +24,8 @@
         'security/ir.model.access.csv',
         'data/data.xml',
         'static/src/xml/orden_trabajo.xml',
+        'views/views.xml',
+        
     ],
      'images': [
         'static/src/img/d.png',
@@ -31,6 +33,15 @@
         'static/src/img/p.png',
         'static/src/img/v.png',
     ],
+     'assets': {
+    'web.assets_frontend': [
+        'orden_trabajo/static/src/js/validations.js',
+        # other files or globs as needed
+    ]
+    },
+     'qweb': [
+         
+         ],
     # only loaded in demonstration mode
     'demo': [
         'demo/demo.xml',
