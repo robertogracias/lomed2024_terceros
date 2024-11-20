@@ -38,7 +38,7 @@
                         data-model_name="orden_trabajo.orden" data-mark="*"
                         data-pre-fill="true"
                         data-success_page="/orden_trabajo/success">
-                        <div class="container" style="background-color: #dadada;">
+                        <div class="container" style="background-color: #dadada; margin-top:20px; margin-bottom:20px;">
                             <div class="row">
                                 <div class="col-md-6">
                                     <span style="text-align: center;">Creacion de nueva orden de
@@ -106,6 +106,7 @@
                                                         style="width: 110px;"
                                                         class="form-control o_website_form_input"
                                                         step="0.25"
+                                                        required="True"
                                                         name="esfera_ojo_derecho"/>
                                                 <div id="feedback_esfera_ojo_derecho" class="invalid-feedback">
                                                   </div>

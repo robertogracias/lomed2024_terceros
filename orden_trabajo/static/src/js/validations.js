@@ -65,7 +65,7 @@
 
     //validar valores expecificos
     function validar_valores_especificos_flooat(objecto,feedback,valores){
-        let valor = parseFloat($(objecto).val())
+        let valor = parseFloat($(objecto).val());
         let valido = true;
         let string_valores = '';
         let separador = '';
@@ -96,35 +96,123 @@
          }
     }
 
+    function validar_mensaje(objecto,estado,mensaje=''){
+        let feetbak_string = '#feedback_'+$(objecto).attr('name');
+        if (estado == 'V'){
+            $(objecto).removeClass('is-invalid').addClass('is-valid');
+            return true;
+        }else{
+            $(objecto).removeClass('is-valid');
+            $(objecto).addClass('is-invalid');
+            $(feetbak_string).text(mensaje);
+            return false;
+        }
+       
+    }
+
     //Vinculanoo las funciones concada uno de los botones a validar
      $('#cilindro_ojo_derecho').on("change", function () {
-        validate_saltos(this,'#feedback_cilindro_ojo_derecho')
+        let valido = validate_saltos(this,'#feedback_cilindro_ojo_derecho');
+        let valor = parseFloat($(this).val());
+        let objecto_eje = $('#eje_ojo_derecho');
+        let valor_eje = parseFloat($('#eje_ojo_derecho').val());
+        console.log(valor_eje)
+        if(valido){
+            if(valor>0 && !(valor_eje>0))
+            {   
+                validar_mensaje(objecto_eje,'E','El valor del eje debe ser mayor a 0.');
+            }
+            else{
+                validar_mensaje(objecto_eje,'V','El valor del eje debe ser mayor a 0.');
+            }
+           if(valor_eje>0 && !(valor>0)){
+                validar_mensaje(this,'E','El valor del eje debe ser mayor a 0.');
+            }else{
+                validar_mensaje(this,'V','El valor del eje debe ser mayor a 0.');
+            }
+
+        }
+
      });
      
      $('#cilindro_ojo_izquierdo').on("change", function () {
-        validate_saltos(this,'#feedback_cilindro_ojo_izquierdo')
+        let valido =validate_saltos(this,'#feedback_cilindro_ojo_izquierdo')
+        let valor = parseFloat($(this).val());
+        let objecto_eje = $('#eje_ojo_derecho');
+        let valor_eje = parseFloat($(objecto_eje).val());
+        console.log(valor_eje)
+        if(valido){
+            if(valor>0 && !(valor_eje>0))
+            {   
+                validar_mensaje(objecto_eje,'E','El valor del eje debe ser mayor a 0.');
+            }
+            else{
+                validar_mensaje(objecto_eje,'V','El valor del eje debe ser mayor a 0.');
+            }
+           if(valor_eje>0 && !(valor>0)){
+                validar_mensaje(this,'E','El valor del cilindro debe ser mayor a 0.');
+            }else{
+                validar_mensaje(this,'V','El valor del cilindro debe ser mayor a 0.');
+            }
+
+        }
      });
      $('#esfera_ojo_derecho').on("change", function () {
-        validate_saltos(this,'#feedback_esfera_ojo_derecho')
+        validate_saltos(this,'#feedback_esfera_ojo_derecho');
+        
      });
      $('#esfera_ojo_izqueirdo').on("change", function () {
         validate_saltos(this,'#feedback_esfera_ojo_izqueirdo')
      });
      $('#eje_ojo_izquierdo').on("change", function () {
         let valido = true;
+        let valor = parseFloat($(this).val());
         let feedback_string = '#feedback_eje_ojo_izquierdo';
+        let objecto_cilindro = $('#cilindro_ojo_izquierdo');
+        let valor_cilindro = parseFloat($(objecto_cilindro).val());
         valido = validate_saltos(this,feedback_string)
         if (valido){
             valido = validar_min_max(this,feedback_string,0,180);
+        }
+        if(valido){
+            if(valor>0 && !(valor_cilindro>0))
+                {   
+                    validar_mensaje(objecto_cilindro,'E','El valor del cilindro debe ser mayor a 0.');
+                }
+                else{
+                    validar_mensaje(objecto_cilindro,'V','El valor del cilindro debe ser mayor a 0.');
+                }
+               if(valor_cilindro>0 && !(valor>0)){
+                    validar_mensaje(this,'E','El valor del eje debe ser mayor a 0.');
+                }else{
+                    validar_mensaje(this,'V','El valor del eje debe ser mayor a 0.');
+                }
         }
 
      });
      $('#eje_ojo_derecho').on("change", function () {
         let valido = true;
+        let valor = parseFloat($(this).val());
         let feedback_string = '#feedback_eje_ojo_derecho';
+        let objecto_cilindro = $('#cilindro_ojo_derecho');
+        let valor_cilindro = parseFloat($(objecto_cilindro).val());
         valido = validate_saltos(this,feedback_string)
         if (valido){
             valido = validar_min_max(this,feedback_string,0,180);
+        }
+        if(valido){
+            if(valor>0 && !(valor_cilindro>0))
+                {   
+                    validar_mensaje(objecto_cilindro,'E','El valor del cilindro debe ser mayor a 0.');
+                }
+                else{
+                    validar_mensaje(objecto_cilindro,'V','El valor del cilindro debe ser mayor a 0.');
+                }
+               if(valor_cilindro>0 && !(valor>0)){
+                    validar_mensaje(this,'E','El valor del eje debe ser mayor a 0.');
+                }else{
+                    validar_mensaje(this,'V','El valor del eje debe ser mayor a 0.');
+                }
         }
      });
      $('#adicion_ojo_izqueirdo').on("change", function () {
