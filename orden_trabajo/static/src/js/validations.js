@@ -138,7 +138,7 @@
      $('#cilindro_ojo_izquierdo').on("change", function () {
         let valido =validate_saltos(this,'#feedback_cilindro_ojo_izquierdo')
         let valor = parseFloat($(this).val());
-        let objecto_eje = $('#eje_ojo_derecho');
+        let objecto_eje = $('#eje_ojo_izquierdo');
         let valor_eje = parseFloat($(objecto_eje).val());
         console.log(valor_eje)
         if(valido){

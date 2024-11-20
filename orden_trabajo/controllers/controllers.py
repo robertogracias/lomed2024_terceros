@@ -17,7 +17,11 @@ class PortalAccount(http.Controller):
     def new_recordx(self, **kw):
         datos = {}
         # hacien
-        datos['tipo_ordenes'] = request.env['orden_trabajo.tipo_orden'].sudo().search([])
+        user = request.env["res.users"].sudo().browse(request.session.uid)
+        if user.has_group('base.group_portal'):
+            datos['tipo_ordenes'] = request.env['orden_trabajo.tipo_orden'].sudo().search([('tipo_usuario','=','portal')])
+        else:
+            datos['tipo_ordenes'] = request.env['orden_trabajo.tipo_orden'].sudo().search([])
         #datos["material_lente"] = request.env['x_material_product'].sudo().search([])
         datos["material_lente"] = []
         #datos["tipo_lente"] = request.env['x_type_lens'].sudo().search([])

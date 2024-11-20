@@ -95,6 +95,7 @@ class tipo_orden(models.Model):
     _description = "Tipo de orden de trabajo"
     name = fields.Char("Nombre")
     codigo = fields.Char("Codigo")
+    tipo_usuario = fields.Selection([("intern","Interno"),("portal","Portal")], string="Usuario permitido")
 
 class disenio_lente(models.Model):
     _name="orden_trabajo.disenio_lente"
